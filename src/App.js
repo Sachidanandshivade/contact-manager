@@ -8,8 +8,9 @@ function App(){
   const addContacts=(contact)=>{
     setContacts([...contacts,contact]);
   };
-  const deleteContact=(index)=>{
-    const updated =contacts.filter((_, i) => i!== index);
+
+  const deleteContact=(id)=>{
+    const updated =contacts.filter((c)=>c.id !== id);
     setContacts(updated);
   };
 
@@ -17,7 +18,7 @@ function App(){
     <div className="App">
     <h1>Contact manager</h1>
     <ContactForm addContact={addContacts} />
-    <ContactList contacts={contacts} deleteContact={deleteContact}/>
+    <ContactList contacts={contacts} onDelete={deleteContact}/>
     </div>
   );
 }

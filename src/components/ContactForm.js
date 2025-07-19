@@ -2,6 +2,7 @@ import React,{useState} from "react";
 function ContactForm({addContact}){
     const[name,setName]=useState('');
     const[email,setEmail]=useState('');
+    const[phone,setPhone]=useState('');
 
     const handleSubmit=(e)=>{
         e.preventDefault();
@@ -9,9 +10,10 @@ function ContactForm({addContact}){
             alert('both name and email are required');
             return;
         }
-        addContact({name,email});
+        addContact({name,email,phone});
         setName('');
         setEmail('');
+        setPhone('');
     };
     return(
         <form onSubmit={handleSubmit}>
@@ -29,6 +31,15 @@ function ContactForm({addContact}){
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Enter email"
+        />
+      </div>
+      <div>
+        <label>Phone: </label>
+        <input
+          type="phone"
+          value={phone}
+          onChange={(e) => setPhone(e.target.value)}
+          placeholder="Enter phone"
         />
       </div>
 
